@@ -1,0 +1,252 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: 'Fira Code', monospace;
+  background-color: #0b0f19;
+  color: #dbeafe;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Layout */
+main {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+/* Top Bar */
+.top-bar {
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between; /* changed from flex-end */
+  align-items: center;
+  border-bottom: 1px solid #334155;
+  background-color: transparent;
+}
+
+
+.app-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #60a5fa;
+  font-family: 'Fira Code', monospace;
+}
+
+
+/* Theme Toggle */
+.theme-toggle button {
+  background: transparent;
+  border: 2px solid #64748b;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle button:hover {
+  background-color: rgba(100, 116, 139, 0.1);
+}
+
+/* Panels */
+.left, .right {
+  flex-basis: 50%;
+  height: calc(100vh - 100px); /* Fixed height accounting for top bar */
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Left Panel */
+.left {
+  background-color: #111827;
+  padding: 1rem;
+}
+
+/* Code Editor */
+.code {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.code::-webkit-scrollbar {
+  display: none;
+}
+
+/* Review Button */
+.review {
+  margin-top: 1rem;
+  align-self: flex-end;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.review:hover {
+  background-color: #2563eb;
+}
+
+.review.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Right Panel */
+.right {
+  background-color: #1e293b;
+  padding: 1.5rem;
+  border: 1px solid #334155;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Loader */
+.loader-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 5px solid #334155;
+  border-top: 5px solid #3b82f6;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: 1rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* Review Card */
+.review-card {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #273349;
+  padding: 1rem;
+  border-radius: 8px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.review-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Code Blocks */
+.review-card code {
+  background-color: #1a2233;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.93rem;
+}
+
+/* Markdown headers */
+.review-card h2,
+.review-card h3 {
+  color: #60a5fa;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* Mode Toggle Buttons */
+.mode-toggle {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mode-toggle button {
+  padding: 0.4rem 1rem;
+  background-color: #334155;
+  color: #dbeafe;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.mode-toggle button:hover {
+  background-color: #475569;
+}
+
+.mode-toggle .active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* === LIGHT THEME === */
+.app-container.light {
+  background-color: #bec5d3;
+  color: #1e293b;
+}
+
+.light .top-bar {
+  border-bottom: 1px solid #d0dff1;
+}
+
+.light .left,
+.light .right {
+  background-color: #cbd9e7;
+  color: #1e293b;
+}
+
+.light .review-card {
+  background-color: #f0f1f5;
+  color: #1e293b;
+}
+
+.light .review-card code {
+  background-color: #d4e0f0;
+  color: #1e293b;
+}
+
+.light .mode-toggle button {
+  background-color: #ffffff;
+  color: #1e293b;
+}
+
+.light .mode-toggle button:hover {
+  background-color: #22344a;
+}
+
+.light .mode-toggle .active {
+  background-color: #22344a;
+  color: #faf9f9;
+}
+
+/* Smooth Transitions */
+.left, .right, .review-card, .code, main {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
